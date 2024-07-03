@@ -64,6 +64,11 @@ Project/
      SECRET_KEY=your_secret_key
      ```
 
+4. **Create a database:**
+    ```plaintext
+    your_database_name
+    ```
+    
 4. **Run the application:**
 
    ```bash

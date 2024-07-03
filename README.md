@@ -44,7 +44,7 @@ Project/
 ## Setup Instructions
 
 1. **Use this Template Repo:**
-   [Use this template to create your repo](https://github.com/samirm00/express-mysql-template)
+   [Use this template to create your repo](https://github.com/HackYourFutureBelgium/node-template)
 
 2. **Install dependencies:**
 
@@ -65,11 +65,11 @@ Project/
      ```
 
 4. **Create a database:**
-    ```plaintext
-    your_database_name
+    ```sql
+    CREATE DATABASE your_database_name;
     ```
     
-4. **Run the application:**
+5. **Run the application:**
 
    ```bash
    npm run dev

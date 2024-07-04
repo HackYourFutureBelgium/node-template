@@ -99,6 +99,9 @@ DB_HOST=your_database_host
 - **POST /login**
   - Logs in an existing user.
 
+- **POST /logout**
+  - Logout user.
+
 ### Recipe Routes
 
 - **GET /recipes**

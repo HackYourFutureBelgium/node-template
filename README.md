@@ -122,35 +122,35 @@ DB_HOST=your_database_host
 
 ## Controllers
 
-### User Controller (`controllers/userController.js`)
+### User Controller
 
 Handles user registration, login, and other user-related actions.
 
-### Recipe Controller (`controllers/recipeController.js`)
+### Recipe Controller
 
 Manages CRUD operations for recipes.
 
 ## Middleware Functions
 
-### Verify Token (`middleware/verifyToken.js`)
+### Verify Token
 
 Middleware function to verify user tokens for authentication purposes.
 
 ## Utility Functions
 
-### hashPassword.js (`utils/hashPassword.js`)
+### hashPassword.js
 
 Utility to hash user passwords for secure storage.
 
-### matchPasswords.js (`utils/matchPasswords.js`)
+### matchPasswords.js
 
 Utility to compare plain and hashed passwords for login verification.
 
-### validateEmail.js (`utils/validateEmail.js`)
+### validateEmail.js
 
 Utility to validate email format.
 
-### validatePasswords.js (`utils/validatePasswords.js`)
+### validatePasswords.js
 
 Utility to ensure passwords meet required complexity criteria.
 

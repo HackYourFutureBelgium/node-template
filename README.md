@@ -147,7 +147,7 @@ Utility to hash user passwords for secure storage.
 
 ### matchPasswords.js
 
-Utility to compare plain and hashed passwords for login verification.
+Utility to compare password and confirmPassword.
 
 ### validateEmail.js
 

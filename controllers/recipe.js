@@ -5,7 +5,7 @@ const recipeControllers = {
     getOneRecipe: async (req, res) => {},
     postRecipe: async (req, res) => {},
     updateRecipe: async (req, res) => {},
-    deleteRecipe: async (req, res) => {},
+    deleteRecipe: async (req, res) => {}
 };
 
 export default recipeControllers;

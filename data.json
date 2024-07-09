@@ -1,0 +1,82 @@
+{
+  "recipes": [
+    {
+      "id": 1,
+      "name": "Classic Margherita Pizza",
+      "description": "A simple and delicious traditional Italian pizza",
+      "image": "https://example.com/images/margherita-pizza.jpg",
+      "ingredients": [
+        "1 pizza dough",
+        "1/2 cup tomato sauce",
+        "200g fresh mozzarella",
+        "Fresh basil leaves",
+        "2 tbsp olive oil",
+        "Salt to taste"
+      ],
+      "steps": [
+        "Preheat oven to 450°F (230°C)",
+        "Roll out the pizza dough on a floured surface",
+        "Spread tomato sauce evenly over the dough",
+        "Top with sliced mozzarella",
+        "Bake for 10-12 minutes until crust is golden",
+        "Remove from oven, top with fresh basil leaves",
+        "Drizzle with olive oil and sprinkle salt before serving"
+      ],
+      "user_id": 1
+    },
+    {
+      "id": 2,
+      "name": "Chocolate Chip Cookies",
+      "description": "Soft and chewy cookies with gooey chocolate chips",
+      "image": "https://example.com/images/chocolate-chip-cookies.jpg",
+      "ingredients": [
+        "2 1/4 cups all-purpose flour",
+        "1 tsp baking soda",
+        "1 cup butter, softened",
+        "3/4 cup granulated sugar",
+        "3/4 cup brown sugar",
+        "2 large eggs",
+        "2 tsp vanilla extract",
+        "2 cups semi-sweet chocolate chips"
+      ],
+      "steps": [
+        "Preheat oven to 375°F (190°C)",
+        "Mix flour and baking soda in a bowl",
+        "In another bowl, cream butter and sugars until fluffy",
+        "Beat in eggs and vanilla to the butter mixture",
+        "Gradually stir in the flour mixture",
+        "Fold in chocolate chips",
+        "Drop spoonfuls of dough onto ungreased baking sheets",
+        "Bake for 9-11 minutes or until golden brown",
+        "Let cool on baking sheet for 5 minutes before transferring to a wire rack"
+      ],
+      "user_id": 2
+    },
+    {
+      "id": 3,
+      "name": "Vegetable Stir Fry",
+      "description": "A quick and healthy vegetable stir fry with a savory sauce",
+      "image": "https://example.com/images/vegetable-stir-fry.jpg",
+      "ingredients": [
+        "2 cups mixed vegetables (bell peppers, broccoli, carrots, snap peas)",
+        "2 tbsp vegetable oil",
+        "2 cloves garlic, minced",
+        "1 tbsp ginger, grated",
+        "3 tbsp soy sauce",
+        "1 tbsp cornstarch",
+        "1/4 cup water",
+        "1 tsp sesame oil"
+      ],
+      "steps": [
+        "Mix soy sauce, cornstarch, and water in a small bowl; set aside",
+        "Heat vegetable oil in a large wok or skillet over medium-high heat",
+        "Add garlic and ginger, stir-fry for 30 seconds",
+        "Add mixed vegetables and stir-fry for 3-4 minutes until crisp-tender",
+        "Pour the sauce mixture into the pan and cook, stirring, until sauce thickens",
+        "Remove from heat and drizzle with sesame oil",
+        "Serve hot over rice or noodles"
+      ],
+      "user_id": 1
+    }
+  ]
+}

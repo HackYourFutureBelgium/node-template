@@ -12,17 +12,35 @@ console.log('MySQL Pool created successfully');
 
 // Create query
 const query = async (sql, values) => {
-    const connection = await pool.getConnection();
+    let connection;
     try {
-        const [results] = await connection.query(sql, values);
+        connection = await pool.getConnection();
+        console.log('Executing query:', sql);
+        const [results, fields] = await connection.query(sql, values);
+        console.log(
+            'Query executed successfully. Affected rows:',
+            results.affectedRows
+        );
         return results;
     } catch (err) {
-        return err;
+        console.error('Error executing query:', err);
+        throw err;
     } finally {
         if (connection) {
             connection.release();
         }
     }
 };
+
+const testConnection = async () => {
+    try {
+        const result = await query('SELECT 1');
+        console.log('Database connection test successful');
+    } catch (err) {
+        console.error('Database connection test failed:', err);
+    }
+};
+
+testConnection();
 
 export default query;

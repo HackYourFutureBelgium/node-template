@@ -30,11 +30,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(PATH, 'public')));
 
 // create tables
-createUserTable();
+// createUserTable();
 createRecipeTable();
 
 // use routes
-app.use(userRoutes);
+// app.use(userRoutes);
 app.use(recipeRoutes);
 
 // error

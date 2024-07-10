@@ -9,11 +9,12 @@ const createRecipeTable = async () => {
                 description TEXT NOT NULL,
                 image TEXT NOT NULL,
                 ingredients TEXT NOT NULL,
-                steps TEXT NOT NULL,
-                user_id INTEGER NOT NULL,
-                FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE
+                steps TEXT NOT NULL
             )
         `);
+        console.log('table has been created');
+
+        // Check if the table exists
     } catch (err) {
         console.log(err);
     }

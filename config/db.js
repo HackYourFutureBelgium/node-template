@@ -17,10 +17,7 @@ const query = async (sql, values) => {
         connection = await pool.getConnection();
         console.log('Executing query:', sql);
         const [results, fields] = await connection.query(sql, values);
-        console.log(
-            'Query executed successfully. Affected rows:',
-            results.affectedRows
-        );
+        console.log('Query executed successfully. ');
         return results;
     } catch (err) {
         console.error('Error executing query:', err);

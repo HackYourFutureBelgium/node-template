@@ -31,11 +31,13 @@ app.use(express.static(path.join(PATH, 'public')));
 
 // create tables
 // createUserTable();
-createRecipeTable();
+
+// table already created
+// createRecipeTable();
 
 // use routes
 // app.use(userRoutes);
-app.use(recipeRoutes);
+app.use('/recipes', recipeRoutes);
 
 // error
 app.use((err, req, res, next) => {

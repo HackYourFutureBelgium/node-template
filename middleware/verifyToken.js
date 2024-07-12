@@ -1,3 +1,5 @@
+// middleware/verifyToken.js
+
 import jwt from 'jsonwebtoken';
 
 const verifyToken = (req, res, next) => {
@@ -5,12 +7,13 @@ const verifyToken = (req, res, next) => {
     if (token) {
         jwt.verify(token, process.env.TOKEN_ACCESS_SECRET, (err, data) => {
             if (err) {
-                res.status(498).json({ message: 'token is not valid' });
+                return res.status(498).json({ message: 'Token is not valid' });
             }
+            req.userId = data.id;
             next();
         });
     } else {
-        res.status(498).json({ message: 'token is not valid' });
+        res.status(498).json({ message: 'Token is not valid' });
     }
 };
 

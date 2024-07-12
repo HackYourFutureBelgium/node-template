@@ -1,5 +1,9 @@
 import mysql from 'mysql2/promise';
+import dotenv from 'dotenv';
 
+dotenv.config ();
+
+// Create a connection pool
 const pool = mysql.createPool({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
@@ -10,19 +14,27 @@ const pool = mysql.createPool({
 
 console.log('MySQL Pool created successfully');
 
-// Create query
+// Query function
 const query = async (sql, values) => {
-    const connection = await pool.getConnection();
+    let connection;
     try {
+        // Get a connection from the pool
+        connection = await pool.getConnection();
+
+        // Execute the query with provided SQL and values
         const [results] = await connection.query(sql, values);
+
+        // Return the query results
         return results;
     } catch (err) {
-        return err;
+        console.error('Database query error:', err.message);
+        throw err;  // Rethrow the error to be handled by the caller
     } finally {
         if (connection) {
-            connection.release();
+            // Release the connection back to the pool
+            await connection.release();
         }
     }
 };
 
-export default query;
+export default connection;

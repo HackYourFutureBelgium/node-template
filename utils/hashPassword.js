@@ -5,3 +5,5 @@ const hashPassword = (password) => {
 };
 
 export default hashPassword;
+
+

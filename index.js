@@ -11,8 +11,12 @@ import createRecipeTable from './models/recipe.js';
 import userRoutes from './routes/user.js';
 import recipeRoutes from './routes/recipe.js';
 
+// Initialize environment variables
+dotenv.config();
+
+
 // set port
-const PORT = process.env.PORT || 5009;
+const PORT = process.env.PORT || 5002;
 
 // Construct path
 const __filename = fileURLToPath(import.meta.url);

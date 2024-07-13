@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Manager</title>
+    <link rel="stylesheet" href="./public/style.css" />
+    
+</head>
+<body>
+
+<h1>Recipe Manager</h1>
+
+<!-- Form to add a new recipe -->
+<h2>Add Recipe</h2>
+<form id="recipeForm">
+    <input type="text" id="title" placeholder="Recipe Title" required />
+    <textarea id="ingredients" placeholder="Ingredients" required></textarea>
+    <button type="submit">Add Recipe</button>
+</form>
+
+<!-- Section to display recipes -->
+<h2>All Recipes</h2>
+<ul id="recipeList"></ul>
+
+<script>
+    const recipeForm = document.getElementById('recipeForm');
+    const recipeList = document.getElementById('recipeList');
+
+    // Fetch and display recipes
+    const fetchRecipes = async () => {
+        const response = await fetch('/api/recipes');
+        const recipes = await response.json();
+        recipeList.innerHTML = recipes.map(recipe => `
+            <li>
+                <strong>${recipe.title}</strong> - ${recipe.description}
+                <button onclick="deleteRecipe(${recipe.id})">Delete</button>
+                <button onclick="editRecipe(${recipe.id})">Edit</button>
+            </li>
+        `).join('');
+    };
+
+    // Add a new recipe
+    recipeForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const title = document.getElementById('title').value;
+        const description = document.getElementById('ingredients').value;
+
+        await fetch('/api/recipes', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ title, description }),
+        });
+
+        recipeForm.reset();
+        fetchRecipes();
+    });
+
+    // Delete a recipe
+    const deleteRecipe = async (id) => {
+        await fetch(`/api/recipes/${id}`, { method: 'DELETE' });
+        fetchRecipes();
+    };
+
+    // Edit a recipe
+    const editRecipe = async (id) => {
+        const title = prompt("Enter new title:");
+        const description = prompt("Enter new ingredients:");
+
+        await fetch(`/api/recipes/${id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ title, description }),
+        });
+
+        fetchRecipes();
+    };
+
+    // Initial fetch
+    fetchRecipes();
+</script>
+
+</body>
+</html>

@@ -11,6 +11,7 @@ import createRecipeTable from './models/recipe.js';
 import userRoutes from './routes/user.js';
 import recipeRoutes from './routes/recipe.js';
 
+
 // set port
 const PORT = process.env.PORT || 5009;
 
@@ -36,6 +37,13 @@ createRecipeTable();
 // use routes
 app.use(userRoutes);
 app.use(recipeRoutes);
+
+app.get('/', (req,res) => {
+
+    res.sendFile(path.join(PATH,'controllers','index.html'));
+
+});
+
 
 // error
 app.use((err, req, res, next) => {

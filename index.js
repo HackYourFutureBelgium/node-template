@@ -1,5 +1,6 @@
 import express from 'express';
 import cookieParser from 'cookie-parser';
+import dotenv from 'dotenv';
 
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -10,6 +11,8 @@ import createRecipeTable from './models/recipe.js';
 // import routes
 import userRoutes from './routes/user.js';
 import recipeRoutes from './routes/recipe.js';
+
+dotenv.config();
 
 // set port
 const PORT = process.env.PORT || 5009;

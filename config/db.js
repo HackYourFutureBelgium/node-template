@@ -8,6 +8,8 @@ const pool = mysql.createPool({
     connectionLimit: 10
 });
 
+
+
 console.log('MySQL Pool created successfully');
 
 // Create query

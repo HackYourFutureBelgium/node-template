@@ -6,6 +6,8 @@ const router = express.Router();
 router.get('/', recipeControllers.getAllRecipes);
 router.post('/add', recipeControllers.postRecipe);
 router.get('/:id', recipeControllers.getOneRecipe);
+router.put('/update/:id', recipeControllers.updateRecipe);
+router.delete('/delete/:id', recipeControllers.deleteRecipe);
 
 // routes
 

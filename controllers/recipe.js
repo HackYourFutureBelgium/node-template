@@ -6,11 +6,15 @@ const recipeControllers = {
             const { rows } = await query('SELECT * FROM recipes');
 
             if (!rows || rows.length === 0) {
-                return res.status(404).json({ message: 'No recipes found' });
+                return res.status(404).json({
+                    message: 'No recipes found'
+                });
             }
             res.status(200).json(rows);
         } catch (error) {
-            res.status(500).json({ message: error.message });
+            res.status(500).json({
+                message: error.message
+            });
         }
     },
     getOneRecipe: async (req, res) => {
@@ -21,7 +25,9 @@ const recipeControllers = {
                 [id]
             );
         } catch (error) {
-            res.status(500).json({ message: error.message });
+            res.status(500).json({
+                message: error.message
+            });
         }
     },
     postRecipe: async (req, res) => {
@@ -38,13 +44,53 @@ const recipeControllers = {
                 'INSERT INTO recipes(name, description, image, ingredients, steps) VALUES (?, ?, ?, ?, ?) RETURNING *',
                 [recipeName, description, image, ingredients, steps]
             );
-            res.status(201).json({ message: 'Recipe created' });
+            res.status(201).json({
+                message: 'Recipe created'
+            });
         } catch (error) {
-            res.status(500).json({ message: error.message });
+            res.status(500).json({
+                message: error.message
+            });
         }
     },
-    updateRecipe: async (req, res) => {},
-    deleteRecipe: async (req, res) => {}
+    updateRecipe: async (req, res) => {
+        try {
+            const { id } = req.params;
+            const {
+                name: recipeName,
+                description,
+                image,
+                ingredients,
+                steps
+            } = req.body;
+            const { rows } = await query(
+                'UPDATE recipes SET name = $1, description = $2, image = $3,ingredients = $4, steps = $5 WHERE id = $6 RETURNING *',
+                [recipeName, description, image, ingredients, steps, id]
+            );
+            res.status(200).json({
+                message: 'Recipe updated'
+            });
+        } catch (error) {
+            res.status(500).json({
+                message: error.message
+            });
+        }
+    },
+    deleteRecipe: async (req, res) => {
+        try {
+            const { id } = req.params;
+            const { rows } = await query('DELETE FROM recipes WHERE id = ?', [
+                id
+            ]);
+            res.status(200).json({
+                message: 'Recipe deleted'
+            });
+        } catch (error) {
+            res.status(500).json({
+                message: error.message
+            });
+        }
+    }
 };
 
 export default recipeControllers;

@@ -41,7 +41,7 @@ const recipeControllers = {
             } = req.body;
 
             const { rows } = await query(
-                'INSERT INTO recipes(name, description, image, ingredients, steps) VALUES (?, ?, ?, ?, ?) RETURNING *',
+                'INSERT INTO recipes(name, description, image, ingredients, steps) VALUES (?, ?, ?, ?, ?)',
                 [recipeName, description, image, ingredients, steps]
             );
             res.status(201).json({
@@ -64,7 +64,7 @@ const recipeControllers = {
                 steps
             } = req.body;
             const { rows } = await query(
-                'UPDATE recipes SET name = $1, description = $2, image = $3,ingredients = $4, steps = $5 WHERE id = $6 RETURNING *',
+                'UPDATE recipes SET name = ?, description = ?, image = ?,ingredients = ?, steps = ? WHERE id = ?',
                 [recipeName, description, image, ingredients, steps, id]
             );
             res.status(200).json({

@@ -30,7 +30,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(PATH, 'public')));
 
 // create tables
-createUserTable();
+// createUserTable();
 
 // table already created
 // createRecipeTable();

@@ -3,7 +3,7 @@ import query from '../config/db.js';
 const recipeControllers = {
     getAllRecipes: async (req, res) => {
         try {
-            const { rows } = await query('SELECT * FROM recipes');
+            const rows = await query('SELECT * FROM recipes');
 
             if (!rows || rows.length === 0) {
                 return res.status(404).json({
@@ -20,10 +20,15 @@ const recipeControllers = {
     getOneRecipe: async (req, res) => {
         try {
             const { id } = req.params;
-            const { rows } = await query(
-                'SELECT * FROM recipes WHERE id = $1',
-                [id]
-            );
+            const rows = await query('SELECT * FROM recipes WHERE id = ?', [
+                id
+            ]);
+            if (!rows || rows.length === 0) {
+                return res.status(404).json({
+                    message: 'No recipe found'
+                });
+            }
+            res.status(200).json(rows);
         } catch (error) {
             res.status(500).json({
                 message: error.message

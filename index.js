@@ -1,5 +1,9 @@
 import express from 'express';
 import cookieParser from 'cookie-parser';
+import dotenv from 'dotenv';
+import bodyParser from 'body-parser';
+
+dotenv.config();
 
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -12,6 +16,7 @@ import userRoutes from './routes/user.js';
 import recipeRoutes from './routes/recipe.js';
 
 // set port
+
 const PORT = process.env.PORT || 5009;
 
 // Construct path

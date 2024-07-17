@@ -1,4 +1,12 @@
 import mysql from 'mysql2/promise';
+import dotenv from 'dotenv';
+import path, { dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+//construct path
+const __filename=fileURLToPath(import.meta.url);
+const PATH=dirname(__filename);
+dotenv.config({ path:path.join(PATH, '../.env')});
 
 const pool = mysql.createPool({
     host: process.env.DB_HOST,

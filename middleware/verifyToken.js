@@ -1,17 +1,20 @@
 import jwt from 'jsonwebtoken';
 
 const verifyToken = (req, res, next) => {
-    const token = req.cookies.token;
-    if (token) {
-        jwt.verify(token, process.env.TOKEN_ACCESS_SECRET, (err, data) => {
-            if (err) {
-                res.status(498).json({ message: 'token is not valid' });
-            }
-            next();
-        });
-    } else {
-        res.status(498).json({ message: 'token is not valid' });
+    const token = req.cookies.token || '';
+
+    if (!token) {
+        return res.status(403).send('A token is required for authentication');
     }
+
+    try {
+        const decoded = jwt.verify(token, process.env.TOKEN_ACCESS_SECRET);
+        req.user = decoded;
+    } catch (err) {
+        return res.status(401).send('Invalid Token');
+    }
+    return next();
 };
 
 export default verifyToken;
+

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Recipe Manager</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<h1>Register</h1>
+
+<!-- Registration Form -->
+<form id="registerForm">
+    <input type="email" id="email" placeholder="Email" required />
+    <input type="password" id="password" placeholder="Password" required />
+    <input type="password" id="rePassword" placeholder="Confirm Password" required />
+    <button type="submit">Register</button>
+</form>
+
+<script>
+    const registerForm = document.getElementById('registerForm');
+
+    // Handle registration form submission
+    registerForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const rePassword = document.getElementById('rePassword').value;
+
+        if (password !== rePassword) {
+            alert('Passwords do not match.');
+            return;
+        }
+
+        const response = await fetch('/api/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password }),
+        });
+
+        if (response.ok) {
+            // Redirect to the login page after successful registration
+            window.location.href = '/login';
+        } else {
+            const errorMessage = await response.text();
+            alert(`Registration failed: ${errorMessage}`);
+        }
+    });
+</script>
+
+</body>
+</html>

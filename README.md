@@ -65,10 +65,11 @@ Project/
      ```
 
 4. **Create a database:**
-    ```sql
-    CREATE DATABASE your_database_name;
-    ```
-    
+
+   ```sql
+   CREATE DATABASE your_database_name;
+   ```
+
 5. **Run the application:**
 
    ```bash
@@ -97,6 +98,7 @@ DB_HOST=your_database_host
   - Registers a new user.
 
 - **POST /login**
+
   - Logs in an existing user.
 
 - **POST /logout**
